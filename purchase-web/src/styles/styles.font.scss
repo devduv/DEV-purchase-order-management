@@ -1,0 +1,22 @@
+$font-family: 'Amelia-Basic';
+
+@font-face {
+  font-family: $font-family;
+  src: url('../assets/fonts/Amelia-Basic-Bold.woff2') format('woff2'),
+    url('../assets/fonts/Amelia-Basic-Bold.woff') format('woff');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: $font-family;
+  src: url('../assets/fonts/Amelia-Basic.woff2') format('woff2'),
+    url('../assets/fonts/Amelia-Basic.woff') format('woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: $font-family;
+  src: url('../assets/fonts/Amelia-Basic-Light.woff2') format('woff2'),
+    url('../assets/fonts/Amelia-Basic-Light.woff') format('woff');
+  font-weight: lighter;
+}

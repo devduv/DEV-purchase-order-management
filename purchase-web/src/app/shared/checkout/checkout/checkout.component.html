@@ -1,0 +1,24 @@
+<div class="checkout__container">
+    <div class="checkout__title">
+
+    </div>
+
+    <div class="total__mont">
+        <div class="total__title">
+            Total
+        </div>
+        <div class="total__price">
+            S/{{totalAmount | number:'0.2-2'}}
+        </div>
+    </div>
+
+    <div class="button__actions">
+        <div class="btn button__checkout" style="margin-bottom: 15px;" (click)="finishPurchase()">
+            FINALIZAR COMPRA
+        </div>
+    
+        <div class="btn button__continue" (click)="goProduct()">
+            SEGUIR COMPRANDO
+        </div>
+    </div>
+</div>

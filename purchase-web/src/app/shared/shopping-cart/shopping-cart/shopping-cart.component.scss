@@ -1,0 +1,152 @@
+@import "src/styles/styles.color.scss";
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+tr {
+    font-weight: normal !important;
+    height: 35px;
+}
+
+tr:hover {
+    background-color: $color_secondary-01;
+}
+
+th {
+    font-weight: normal;
+    background-color: #f5f5f5;
+    text-align: left;
+}
+
+.cart-table {
+    width: 100%;
+}
+
+.item_name {
+    font-size: 18px;
+    justify-content: center;
+    padding: 0px 12px;
+}
+
+.item_price {
+    color: $color-primary-02;
+    font-size: 18px;
+    padding: 0px 12px;
+}
+
+.item__quantity {
+    width: 70%;
+    text-align: center;
+    background-color: #f2f2f2;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 3px;
+    opacity: 1;
+    padding: 2px 0px;
+}
+
+.buttons__more_less {
+    width: 40px;
+    margin: 0px 5px;
+}
+
+.item__quantity-select {
+    width: 100%;
+    padding: 0px 10px;
+    display: inline-flex;
+}
+
+.button__avaialble-quantity:hover {
+    background-color: $color_primary-01;
+}
+.button__avaialble-quantity {
+    cursor: pointer;
+    background-color: $color_secondary-04;
+    width: 20px;
+    height: 20px;
+    color: white;
+    margin: 5px 0px;
+}
+
+.button__remove {
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.button__remove:hover {
+    background-color: #f2f2f2;
+}
+.button__unavaialble-quantity {
+    background-color: $color_secondary-07;
+    width: 20px;
+    height: 20px;
+    color: white;
+    margin: 5px 0px;
+}
+
+.header-price {
+    width: 100px;
+}
+.header-quantity {
+    width: 180px;
+}
+.header-total {
+    width: 120px;
+}
+
+.header-name {
+    width: 80px;
+    padding-left: 10px;
+}
+
+.item__quantity-select-media {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+
+    .item__quantity-select-media {
+        display: inline-flex;
+        margin-bottom: 15px;
+    }
+
+    .header-price {
+        display: none;
+    }
+    .header-quantity {
+        display: none;
+    }
+    .header-total {
+        display: none;
+    }
+
+    .item_price {
+        display: none;
+    }
+
+    .item__quantity_td {
+        display: none;
+    }
+
+    .buttons__more_less {
+        margin-top: -8px;
+    }
+
+    .item__quantity {
+        width: 70px;
+        height: 40px;
+    }
+
+    .item_price-media {
+        float: right;
+        color: $color-primary-02;
+        font-size: 18px;
+        padding: 0px 12px;
+    }
+
+    tr {
+        border-bottom: 1px solid $color_secondary-07;
+    }
+}

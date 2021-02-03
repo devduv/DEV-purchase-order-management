@@ -1,0 +1,53 @@
+@import "src/styles/styles.color.scss";
+
+.nav__toolbar {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    height: 58px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav__item {
+    width: 50%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    transition-duration: 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav__item:hover {
+    background-color: rgb(248, 248, 248);
+}
+.item__name {
+    font-size: 14px;
+}
+
+.item__selected {
+    width: 100%;
+    position: absolute;
+    background: $color_primary-01;
+    height: 2px;
+    bottom: 0;
+}
+
+.notification:hover {
+    background: red;
+}
+
+.badge {
+    position: absolute;
+    width: 30px;
+    margin-left: 50px;
+    margin-top: 3px;
+    padding: 5px 5px;
+    border-radius: 50%;
+    background: $color_secondary-03;
+    color: white;
+}

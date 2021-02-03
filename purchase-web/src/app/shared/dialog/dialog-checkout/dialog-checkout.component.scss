@@ -1,0 +1,90 @@
+@import "src/styles/styles.color.scss";
+
+.title__dialog-checkout {
+    font-weight: bold;
+    font-size: 25px;
+    // text-align: center;
+}
+
+.input__document {
+    border-bottom: 1px solid $color_secondary-07;
+}
+
+.invalido {
+    color: red !important;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    color: $color_primary-01 !important;
+}
+
+::ng-deep.mat-form-field-underline {
+    background-color: $color_primary-01 !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+    background-color: $color_primary-01 !important;
+}
+::ng-deep.mat-form-field-appearance-standard .mat-form-field-flex {
+    padding-top: 0px !important;
+}
+
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-ripple,
+.mat-form-field.mat-form-field-invalid .mat-form-field-ripple.mat-accent {
+    background-color: #f44336 !important;
+}
+
+::ng-deep mat-form-field {
+    width: 100%;
+    margin: 0px 5px;
+}
+
+.form__dates {
+    display: inline-flex;
+    width: 100%;
+}
+
+.contanct__section {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact__form {
+    width: 100%;
+}
+
+.contact__information {
+    width: 75%;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+}
+
+@media (max-width: 992px) {
+    .contact__information {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+    .form__dates {
+        display: inline;
+    }
+}
+button:focus {
+    border: none;
+    outline: none;
+}
+
+.button__checkout {
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    background-color: $color_primary-01;
+    line-height: 55px;
+}
+
+.button__checkout:hover {
+    background-color: $color_primary-02;
+}

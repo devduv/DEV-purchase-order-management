@@ -1,0 +1,57 @@
+@import "src/styles/styles.color.scss";
+
+.checkout__container {
+    margin: 0px 10px;
+    border-radius: 15px;
+    border: 1px solid $color_secondary-07;
+}
+
+
+.total__mont {
+    display: inline-flex;
+    width: 100%;
+    padding: 25px;
+}
+
+.button__checkout {
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    background-color: $color_primary-01;
+    line-height: 55px;
+}
+
+.button__checkout:hover {
+    background-color: $color_primary-02;
+}
+
+.button__continue {
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    background-color: white;
+    border: solid 1px $color_secondary-07;
+    color: black;
+    line-height: 55px;
+}
+
+.button__continue:hover {
+    background-color: $color_secondary-07;
+}
+
+.total__title {
+    font-size: 25px;
+}
+
+.total__price {
+    width: 100%;
+    text-align: right;
+    font-size: 27px;
+    font-weight: bold;
+    color: $color_primary-02;
+
+}
+
+.button__actions {
+    padding: 15px;
+}

@@ -1,0 +1,25 @@
+<div>
+    <div>
+        <div class="title__cart">
+            Mi carrito
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showShoppingCart && !showEmptyCart" class="cart__container">
+    <app-shopping-cart  class="shopping-cart__container" 
+        [cart]="cart"
+        (itemSeletected)="removeItem($event)"
+        (actionQuantityItem)="actionQuantityItem($event)"
+    >
+    </app-shopping-cart>
+
+    <app-checkout class="checkout__container"
+        [cart]="cart"
+        [totalAmount]="totalAmount"
+    >
+    </app-checkout>
+</div>
+
+<app-empty-cart *ngIf="showEmptyCart && !showShoppingCart">
+</app-empty-cart>

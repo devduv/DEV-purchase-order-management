@@ -1,0 +1,141 @@
+@import "src/styles/styles.color.scss";
+
+.title__product {
+    margin: 10px 0px 5px 0px;
+    font-size: 28px;
+    font-weight: bold;
+    color: $color_primary-01;
+    text-align: center;
+}
+
+.subtitle__product {
+    text-align: center;
+    color: $color_secondary-02;
+    margin: 5px;
+}
+
+.product-list {
+    text-align: center;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 25% 25% 25% 25%;
+    // grid-column-gap: 25px;
+    grid-row-gap: 10px;
+    width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+    .product-list {
+        grid-template-columns: 30% 30% 30%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .product-list {
+        grid-template-columns: 50% 50%;
+        grid-column-gap: 0px;
+    }
+
+    .item__description {
+        height: 70px !important;
+    }
+}
+
+.item__container {
+    background-color: white;
+    margin: 8px;
+    max-width: 100%;
+    text-align: center;
+    border-radius: 8px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+
+@media screen and (min-width: 769px) {
+    .item__container:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    }
+}
+
+
+.item__description {
+    font-weight: bold;
+    height: 48px;
+}
+
+.item__brand {
+    color: $color_secondary-04;
+}
+
+.item__price {
+    color: $color_primary-01;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.item__actions {
+    display: inline-flex;
+    width: 100%;
+}
+
+.item__quantity {
+    width: 70%;
+    text-align: center;
+    background-color: #f2f2f2;
+    font-size: 25px;
+    font-weight: 600;
+    border-radius: 3px;
+    opacity: 1;
+    padding: 10px 0px;
+}
+
+.buttons__more_less {
+    width: 40px;
+    margin: 0px 5px;
+}
+
+.item__quantity-select {
+    width: 40%;
+    display: inline-flex;
+}
+
+.button__avaialble-quantity:hover {
+    background-color: $color_primary-01;
+}
+
+.button__add-to-cart {
+    width: 60%;
+    flex-grow: 1;
+    background-color: $color_primary-01;
+    line-height: 55px;
+}
+
+.button__add-to-cart:hover {
+    background-color: $color_primary-02;
+}
+
+.button__adding-to-cart {
+    width: 60%;
+    flex-grow: 1;
+    background-color: $color_primary-02;
+    line-height: 55px;
+}
+
+.button__avaialble-quantity {
+    background-color: $color_secondary-04;
+    width: 20px;
+    height: 20px;
+    color: white;
+    margin: 5px 0px;
+}
+
+.button__unavaialble-quantity {
+    background-color: $color_secondary-07;
+    width: 20px;
+    height: 20px;
+    color: white;
+    margin: 5px 0px;
+}

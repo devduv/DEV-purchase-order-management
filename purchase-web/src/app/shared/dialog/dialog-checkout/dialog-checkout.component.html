@@ -1,0 +1,72 @@
+<div>
+
+    <div class="title__dialog-checkout">
+        Finalizar Compra
+    </div>
+
+    <form class="form_style" [formGroup]="form" (ngSubmit)="sendOrder()">
+
+        <div>
+            <mat-form-field appearance="standard">
+                <mat-label>Correo</mat-label>
+                <input matInput type="email" placeholder="Correo" required formControlName="email" id="email">
+                <mat-error *ngIf="f.email.errors?.required && f.email.touched" class="invalido">Ingrese un correo
+                    electrónico válido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form__dates">
+            <mat-form-field appearance="standard">
+                <mat-label>N° Documento</mat-label>
+                <input matInput placeholder="N°Documento" required formControlName="document" id="document"
+                    (input)="keyPressMobil($event, 'name')">
+                <mat-error *ngIf="f.name.errors?.required && f.name.touched" class="invalido">
+                    Ingrese un nombre válido
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="standard">
+                <mat-label>Número</mat-label>
+                <input matInput placeholder="Número" required formControlName="phone" max="9" maxlength="9"
+                    type="number" max="9" maxlength="9" type="number" id="phone"
+                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+                <mat-error *ngIf="f.phone.errors?.required && f.phone.touched" class="invalido">Ingrese un número de
+                    celular válido</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form__dates">
+            <mat-form-field appearance="standard">
+                <mat-label>Nombres</mat-label>
+                <input matInput placeholder="Nombres" required formControlName="name" id="name"
+                    (input)="keyPressMobil($event, 'name')">
+                <mat-error *ngIf="f.name.errors?.required && f.name.touched" class="invalido">
+                    Ingrese un nombre válido
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="standard">
+                <mat-label>Apellidos</mat-label>
+                <input matInput placeholder="Apellidos" required formControlName="lastname" id="lastname"
+                    (input)="keyPressMobil($event, 'lastname')">
+                <mat-error *ngIf="f.lastname.errors?.required && f.lastname.touched" class="invalido">
+                    Ingrese un apellido válido</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form__dates">
+
+
+
+        </div>
+        <!--  <div>
+            <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>Mensaje</mat-label>
+                <textarea matInput placeholder="Mensaje" formControlName="mensaje"></textarea>
+            </mat-form-field>
+        </div> -->
+
+        <button class="btn button__checkout" type="submit">
+            REALIZAR PEDIDO
+        </button>
+
+    </form>
+</div>

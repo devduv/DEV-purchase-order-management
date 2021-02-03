@@ -1,0 +1,46 @@
+@import "src/styles/styles.color.scss";
+
+.title__cart {
+    margin: 10px 0px 5px 0px;
+    font-size: 28px;
+    font-weight: bold;
+    color: $color_secondary-04;
+    text-align: center;
+}
+
+.cart__container {
+    display: inline-flex;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center;
+}
+
+.shopping-cart__container {
+    width: 70%;
+    margin-top: 25px;
+    justify-content: center;
+}
+
+.checkout__container {
+    width: 30%;
+    margin-top: 25px;
+    justify-content: center;
+}
+
+
+@media screen and (max-width: 900px) {
+
+    .shopping-cart__container {
+        width: 65%;
+    }
+    .checkout__container {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cart__container {
+        display: inline;
+    }
+}

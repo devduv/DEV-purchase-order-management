@@ -1,0 +1,45 @@
+@import "./styles.font.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Amelia-Basic", sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  background-color: rgb(252, 252, 252);
+}
+
+.btn {
+  color: #fff;
+  border: 0;
+  transition-duration: 0.25s;
+  border-radius: 3px;
+  transition-property: border, background, color, opacity;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input {
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font: inherit;
+  outline: 0;
+}
+
+
+input:focus,
+select:focus {
+    outline: none;
+}

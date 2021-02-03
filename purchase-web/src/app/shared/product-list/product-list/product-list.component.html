@@ -1,0 +1,50 @@
+<div>
+    <div>
+        <div class="title__product">
+            ¡Bienvenido!
+        </div>
+
+        <div class="subtitle__product">
+            Revisa los últimos productos que tenemos para tí
+        </div>
+    </div>
+
+    <div class="product-list">
+        <div class="item__container" *ngFor="let product of products">
+            <div class="item__image">
+                <img style="width: 65%;" [src]="product?.image" />
+            </div>
+            <div class="item__description">
+                {{product?.name}}
+            </div>
+            <div class="item__brand">
+                {{product?.brand}}
+            </div>
+            <div class="item__price">
+                S/{{product?.price | number:'0.2-2'}}
+            </div>
+            <div class="item__actions">
+                <div class="item__quantity-select">
+                    <input #quantity class="item__quantity" type="number" min="0" id="quantity" name="quantity"
+                        value="1" pattern="/[^0-9]" (input)="QuantityInput.keyPress($event, quantity, null)" />
+                    <div class="buttons__more_less">
+                        <div class="btn button__avaialble-quantity"
+                            (click)="QuantityInput.actionQuantity(quantity, 1, null)">
+                            <mat-icon style="line-height: 22px;" [inline]="true">keyboard_arrow_up</mat-icon>
+                        </div>
+                        <div [ngClass]="quantity.value <=1 ? 'button__unavaialble-quantity' : 'button__avaialble-quantity'"
+                            class="btn" (click)="QuantityInput.actionQuantity(quantity, 0, null)">
+                            <mat-icon style="line-height: 22px;" [inline]="true">keyboard_arrow_down</mat-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <div [ngClass]=" (!product.loading && product.message == 'AGREGAR') ? 'button__add-to-cart': 'button__adding-to-cart'"
+                    class="btn" (click)="addCart(product, quantity.value)">
+                    <span *ngIf="!product.loading"> {{product.message}}</span>
+                    <app-loading *ngIf="product.loading"></app-loading>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

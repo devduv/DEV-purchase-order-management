@@ -1,0 +1,73 @@
+<div style="margin: 0px 10px 10px 10px">
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th class="header-name" colspan="2">Producto</th>
+                <th class="header-price">Precio</th>
+                <th class="header-quantity">Cantidad</th>
+                <th class="header-total">Total</th>
+                <th style="width: 50px;"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of cart">
+                <td>
+                    <img [src]="item.product.image" width="80" />
+                    <div class="item__quantity-select item__quantity-select-media">
+                        <input #quantity_media class="item__quantity" type="number" min="0" id="quantity" name="quantity"
+                            value="{{item.quantity}}" (input)="keyPress($event, quantity_media, item)" />
+                        <div class="buttons__more_less">
+                            <div class="btn button__avaialble-quantity"
+                                (click)="actionQuantity(quantity_media, 1, item)">
+                                <mat-icon style="line-height: 22px; text-align: center;" [inline]="true">
+                                    keyboard_arrow_up</mat-icon>
+                            </div>
+                            <div [ngClass]="quantity_media.value <=1 ? 'button__unavaialble-quantity' : 'button__avaialble-quantity'"
+                                class="btn" (click)="actionQuantity(quantity_media, 0, item)">
+                                <mat-icon style="line-height: 22px; text-align: center;" [inline]="true">
+                                    keyboard_arrow_down</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="item_name">
+
+                    {{item.product.name}}
+                    <br />
+                    <span class="item_price-media"> S./ {{item.product.price | number:'0.2-2'}}</span>
+                  
+
+                </td>
+                <td class="item_price">
+                    S./ {{item.product.price | number:'0.2-2'}}
+                </td>
+                <td class="item__quantity_td">
+                    <div class="item__quantity-select">
+                        <input #quantity class="item__quantity" type="number" min="0" id="quantity" name="quantity"
+                            value="{{item.quantity}}" (input)="keyPress($event, quantity, item)" />
+                        <div class="buttons__more_less">
+                            <div class="btn button__avaialble-quantity"
+                                (click)="actionQuantity(quantity, 1, item)">
+                                <mat-icon style="line-height: 22px; text-align: center;" [inline]="true">
+                                    keyboard_arrow_up</mat-icon>
+                            </div>
+                            <div [ngClass]="quantity.value <=1 ? 'button__unavaialble-quantity' : 'button__avaialble-quantity'"
+                                class="btn" (click)="actionQuantity(quantity, 0, item)">
+                                <mat-icon style="line-height: 22px; text-align: center;" [inline]="true">
+                                    keyboard_arrow_down</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td class="item_price">
+                    S./ {{item.product.price * item.quantity | number:'0.2-2'}}
+                </td>
+                <td>
+                    <mat-icon (click)="removeItem(item)" class="button__remove" title="Eliminar del carrito">close
+                    </mat-icon>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
