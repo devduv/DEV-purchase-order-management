@@ -1,0 +1,24 @@
+{
+  "name": "reserve-module",
+  "version": "1.0.0",
+  "description": "Reserve Product Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.6.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "util": "^0.12.3",
+    "webpack": "^5.17.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.4.0"
+  }
+}

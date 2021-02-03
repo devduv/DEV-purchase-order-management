@@ -1,0 +1,9 @@
+{
+    "name": "stock-module/stock-module",
+    "description": "Stock Module.",
+    "require": {
+        "php-amqplib/php-amqplib": ">=2.6.1",
+        "simplon/mysql": "*",
+        "pdo_mysql": "5.1.44"
+    }
+}
