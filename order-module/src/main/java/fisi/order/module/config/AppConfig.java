@@ -16,9 +16,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-import fisi.order.module.security.Config;
-import fisi.order.module.security.DatabaseSource;
-
 @Configuration
 @PropertySource(value = Config.CONFIGURATION, factory = JsonLoader.class)
 public class AppConfig extends WebMvcConfigurationSupport {

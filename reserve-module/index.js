@@ -8,7 +8,6 @@ var con = mysql.createConnection({
     password: ""
 });
 
-
 con.connect(err => {
     if (err) throw err;
     console.log("Connected!");
@@ -40,22 +39,26 @@ amqp.connect('amqp://localhost', function (error0, connection) {
                 con.query(sql, function (err, result) {
                     if (err) throw err;
                     console.log("Result: " + JSON.stringify(result));
+                    updateOrderState(order.order.id, con);
                 });
             });
+
+            factoryFactura(order);
 
             connection.createChannel(function (error1, channel) {
                 if (error1) {
                     throw error1;
                 }
-                var queue = 'billing_queue';
-                var msgBilling = msg.content.toString();
+                var queue = 'reserve_queue';
+                var msgBilling = JSON.stringify(order);
 
+                console.log(msgBilling);
                 channel.assertQueue(queue, {
                     durable: false
                 });
 
                 channel.sendToQueue(queue, Buffer.from(msgBilling));
-                console.log(" [x] Sent %s", msgBilling);
+                console.log(" [x] Enviando mensaje al módulo de Facturación");
             });
 
         }, {
@@ -63,3 +66,52 @@ amqp.connect('amqp://localhost', function (error0, connection) {
         });
     });
 });
+
+
+function updateOrderState(orderId, con) {
+    const sql = `UPDATE dbpurchase.TPORDEN SET ORDER_STATE = '2' WHERE CORDEN = '${orderId}'`;
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        console.log("Result: " + JSON.stringify(result));
+    });
+}
+
+function factoryFactura(order) {
+    order.order.factura = {
+        orderId: order.order.id,
+        customerId: order.order.user.document,
+        customerName: `${order.order.user.name} ${order.order.user.lastname}`,
+        ruc: '',
+        IGV: calculateIGV(order.order.order_details),
+        state: 'E',
+        date: getCurrentDate(),
+        totalAmount: calcualteAmount(order.order.order_details) + calculateIGV(order.order.order_details)
+    };
+
+    console.log(order.order.factura);
+}
+
+function calcualteAmount(products) {
+    let totalAmount = 0;
+    products.forEach(item => {
+        totalAmount = totalAmount + item.quantity * item.productPrice
+    });
+    console.log('totalAmount', totalAmount);
+    return totalAmount;
+}
+
+function calculateIGV(products) {
+    let totalIGV = 0;
+    products.forEach(item => {
+        totalIGV = totalIGV + 0.18 * item.quantity * item.productPrice
+    });
+    console.log('totalIGV', totalIGV);
+    return totalIGV;
+}
+
+function getCurrentDate() {
+    const date = new Date();
+    date.setHours(0, 0, 0, 0);
+    const today = date.toISOString().slice(0, 10);
+    return today;
+}

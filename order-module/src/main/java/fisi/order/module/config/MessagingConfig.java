@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class MessagingConfig {
 
     public static final String QUEUE = "order_queue";
+    public static final String END_QUEUE = "end_queue";
     public static final String EXCHANGE = "order_exchange";
     public static final String ROUTING_KEY = "order_routingKey";
 

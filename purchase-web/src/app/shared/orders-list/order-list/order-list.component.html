@@ -1,1 +1,65 @@
-<p>order-list works!</p>
+<div *ngFor="let order of orders" class="order-item_content">
+    <div class="order_content">
+        <div class="order__id-content">
+            <div>
+                Número de orden:
+            </div>
+            <div class="order__id">
+                {{order?.id}}
+            </div>
+        </div>
+
+        <div class="order__information">
+            <div class="order__date-content">
+                <div>
+                    Fecha de compra: <b>{{order?.date}}</b>
+                </div>
+
+            </div>
+            <div class="order__amount-content">
+                <div>
+                    Total: <b>S/{{order.totalAmount | number:'0.2-2'}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin: 10px 0px;">
+        <hr style="border-top: 1px dashed  gray;" />
+    </div>
+    <div>
+        <div class="traker_order">
+            Seguimiento de la orden:
+        </div>
+        <mat-horizontal-stepper linear #stepper selectedIndex="{{order.state}}">
+            <mat-step state="0" [editable]="false" label="Procesando pedido" (click)="$event.stopPropagation()">
+            </mat-step>
+            <mat-step state="1" [editable]="false" label="Pedido recibido" (click)="$event.stopPropagation()">
+            </mat-step>
+            <mat-step state="2" [editable]="false" label="Pedido confirmado" (click)="$event.stopPropagation()">
+            </mat-step>
+            <mat-step state="3" [editable]="false" label="Facturación" (click)="$event.stopPropagation()">
+            </mat-step>
+            <mat-step [editable]="false" label="Realizar Pago" (click)="$event.stopPropagation()">
+            </mat-step>
+            <ng-template matStepperIcon="0">
+                <mat-icon *ngIf="+order.state > 0">check</mat-icon>
+                <div *ngIf="+order.state <= 0"> 1</div>
+            </ng-template>
+
+            <ng-template  matStepperIcon="1">
+                <mat-icon *ngIf="+order.state > 1">check</mat-icon>
+               <div *ngIf="+order.state <=  1"> 2</div>
+            </ng-template>
+
+            <ng-template matStepperIcon="2">
+                <mat-icon *ngIf="+order.state > 2">check</mat-icon>
+                <div *ngIf="+order.state <= 2"> 3</div>
+            </ng-template>
+            <ng-template matStepperIcon="3">
+                <mat-icon *ngIf="+order.state > 3">check</mat-icon>
+               <div *ngIf="+order.state <= 3 "> 4</div>
+            </ng-template>
+        </mat-horizontal-stepper>
+    </div>
+</div>

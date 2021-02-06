@@ -9,8 +9,9 @@ class StockPublisher {
     public $channel;
     public $QUEUE = 'stock_queue';
 
-    function __construct()
+    function __construct($queue)
     {
+        $this->QUEUE = $queue;
         $this->connection = new AMQPStreamConnection('localhost', 5672, 'guest', 'guest');
         $this->channel = $this->connection->channel();
 

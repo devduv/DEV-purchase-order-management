@@ -11,7 +11,7 @@ tr {
 }
 
 tr:hover {
-    background-color: $color_secondary-01;
+    background-color: $color_secondary-01 !important;
 }
 
 th {

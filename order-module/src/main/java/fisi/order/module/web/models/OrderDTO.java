@@ -11,6 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class OrderDTO {
+    private int id;
     private UserDTO user;
     private List<OrderDetailsDTO> order_details;
 }

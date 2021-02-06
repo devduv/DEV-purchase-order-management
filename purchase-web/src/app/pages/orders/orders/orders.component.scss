@@ -1,0 +1,14 @@
+@import "src/styles/styles.color.scss";
+
+.title__orders {
+    margin: 10px 0px 5px 0px;
+    font-size: 28px;
+    font-weight: bold;
+    color: $color_secondary-04;
+    text-align: center;
+}
+
+
+.order__container {
+    padding: 15px;
+}

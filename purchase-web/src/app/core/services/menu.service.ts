@@ -19,6 +19,8 @@ export class MenuService {
       this.router.navigateByUrl('product');
     } else if (menu === Menu.cart) {
       this.router.navigateByUrl('cart');
+    } else if (menu === Menu.order) {
+      this.router.navigateByUrl('orders');
     }
   }
 

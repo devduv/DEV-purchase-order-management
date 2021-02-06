@@ -22,7 +22,7 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public List<Product> productListAvailable() {
         String query = "select CPRODUCT, PRODUCT_NAME, PRODUCT_PRECIO, PRODUCT_IMAGE, MARCA_NAME from TMPRODUCTO U "
-                + "INNER JOIN tmmarca M ON M.CMARCA = U.MARCA";
+                + "INNER JOIN tmmarca M ON M.CMARCA = U.CMARCA";
 
         List<Map<String, Object>> rows = this.jdbcTemplate.queryForList(query);
         List<Product> list = row.mapRow(rows);

@@ -1,9 +1,10 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Order } from 'src/app/core/model/Order';
 import { Person } from 'src/app/core/model/Person';
 import { OrderService } from 'src/app/core/services/order.service';
+import { PersonService } from 'src/app/core/services/person.service';
 
 @Component({
   selector: 'app-dialog-checkout',
@@ -12,19 +13,32 @@ import { OrderService } from 'src/app/core/services/order.service';
 })
 export class DialogCheckoutComponent implements OnInit {
 
-  person: Person;
-  form: FormGroup;
-  controlArea: FormControl = new FormControl();
+  public person: Person = {};
+  public form: FormGroup;
+  public controlArea: FormControl = new FormControl();
   public order: Order;
+
+  public loading: boolean;
+
   constructor(
     public dialogRef: MatDialogRef<DialogCheckoutComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private personService: PersonService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
+    this.getPersonalInformation();
     this.initForm();
+    this.setInformationForm();
+  }
+
+  private setInformationForm() {
+    this.form.get('name').setValue(this.person.name);
+    this.form.get('lastname').setValue(this.person.lastname);
+    this.form.get('email').setValue(this.person.email);
+    this.form.get('phone').setValue(this.person.phone);
+    this.form.get('document').setValue(this.person.document);
   }
 
   get f() { return this.form.controls; }
@@ -53,23 +67,35 @@ export class DialogCheckoutComponent implements OnInit {
 
   public async sendOrder() {
     if (this.form.invalid) return;
-    this.person = this.form.value;
-    this.order = { user: this.person, order_details: this.factoryOrderDetails() }
-    console.log(this.order);
-    await this.orderService.sendOrder(this.order);
-    this.dialogRef.close();
+    if (!this.loading) {
+      this.loading = true;
+      this.person = this.form.value;
+      this.order = { user: this.person, order_details: this.factoryOrderDetails() }
+      this.savePersonalInformation();
+      await this.orderService.sendOrder(this.order);
+      this.dialogRef.close();
+    }
   }
-
 
   private factoryOrderDetails() {
     const order_details = [];
     this.data.forEach(item => {
       order_details.push({
         productId: item.product.id,
-        quantity: item.quantity
+        quantity: item.quantity,
+        productName: item.product.name,
+        productPrice: item.product.price
       });
     });
     return order_details;
   }
 
+
+  private savePersonalInformation() {
+    this.personService.savePersonalInformation(this.person);
+  }
+
+  private getPersonalInformation() {
+    this.person = this.personService.getPersonalInformation();
+  }
 }

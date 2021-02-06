@@ -30,7 +30,7 @@ class StockRepository
     }
 
 
-    function verify_stock($req)
+    function verify_stock($req, $orderId)
     {
         $productStock = $this->getProductStock();
         $flag = false;
@@ -42,11 +42,11 @@ class StockRepository
                 $productReqId = $req[$j]->productId;
                 $quantity = $req[$j]->quantity;
                 if ($productStockId == $productReqId) {
-                    echo ("Producto solicitado: " . $productoStockName . " - ");
+                    echo ("(!) Producto solicitado: " . $productoStockName . " - ");
                     if ($quantity <= $stock) {
-                        echo ("Hay productos disponibles para " . $quantity . " productos requeridos\n");
+                        echo ("[!] Hay productos disponibles para " . $quantity . " productos requeridos\n");
                     } else {
-                        echo ("No hay productos disponibles para " . $quantity . " productos requeridos\n");
+                        echo ("[X] No hay productos disponibles para " . $quantity . " productos requeridos\n");
                         $flag = true;
                         break;
                     }
@@ -57,9 +57,17 @@ class StockRepository
         if ($flag) {
             echo ("Enviando mensaje de error al módulo de Procesamiento de Ordenes \n");
             return false;
-        } else{
-            echo("Enviando mensaje al módulo de Reserva \n");
+        } else {
+            $this->updateOrderState($orderId);
+            echo ("Enviando mensaje al módulo de Reserva \n");
             return true;
         }
+    }
+
+    function updateOrderState($orderId)
+    {
+        $sql = "UPDATE TPORDEN SET ORDER_STATE = '1' WHERE CORDEN = ?";
+        $stmt = $this->gbd->prepare($sql);
+        $stmt->execute([$orderId]);
     }
 }

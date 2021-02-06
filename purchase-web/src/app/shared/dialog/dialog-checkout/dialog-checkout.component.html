@@ -45,7 +45,7 @@
 
             <mat-form-field appearance="standard">
                 <mat-label>Apellidos</mat-label>
-                <input matInput placeholder="Apellidos" required formControlName="lastname" id="lastname"
+                <input matInput placeholder="Apellidos" required formControlName="lastname" id="lastname" 
                     (input)="keyPressMobil($event, 'lastname')">
                 <mat-error *ngIf="f.lastname.errors?.required && f.lastname.touched" class="invalido">
                     Ingrese un apellido válido</mat-error>
@@ -64,8 +64,8 @@
             </mat-form-field>
         </div> -->
 
-        <button class="btn button__checkout" type="submit">
-            REALIZAR PEDIDO
+        <button class="btn" [ngClass]="loading ? 'button__checkout-action' : 'button__checkout'" type="submit">
+            REALIZAR PEDIDO <app-loading *ngIf="loading"></app-loading>
         </button>
 
     </form>

@@ -83,6 +83,16 @@ button:focus {
     width: 100%;
     background-color: $color_primary-01;
     line-height: 55px;
+    font-size: 18px;
+}
+
+.button__checkout-action {
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+    background-color: $color_primary-02;
+    line-height: 55px;
 }
 
 .button__checkout:hover {

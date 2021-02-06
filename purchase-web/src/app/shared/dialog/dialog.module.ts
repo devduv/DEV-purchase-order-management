@@ -6,6 +6,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoadingModule } from '../loading/loading.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatAutocompleteModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    LoadingModule
   ],
   exports: [DialogCheckoutComponent]
 })

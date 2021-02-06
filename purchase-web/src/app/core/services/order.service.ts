@@ -14,4 +14,15 @@ export class OrderService {
     return this.httpCliente.post<any>(`${environment.API}/order`, order)
       .toPromise();
   }
+
+  public getOrders(customerId: string) {
+    return this.httpCliente.get<any>(`${environment.API}/order?customerId=${customerId}`)
+      .toPromise()
+      .then(orders => {
+        orders.map(i => {
+         i.date = i.date.split(' ')[0];
+        });
+        return orders;
+      });
+  }
 }

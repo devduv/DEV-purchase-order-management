@@ -10,16 +10,21 @@ $channel = $connection->channel();
 $callback = function ($msg) {
     $obj = json_decode($msg->body);
     $repository = new StockRepository();
-    $isAvailable = $repository->verify_stock($obj->order->order_details);
+    $isAvailable = $repository->verify_stock($obj->order->order_details, $obj->order->id);
     if ($isAvailable) {
-        $publisher = new StockPublisher();
+        $publisher = new StockPublisher('stock_queue');
+        $publisher->publish($msg->body);
+    } else {
+        $publisher = new StockPublisher('failed_queue');
         $publisher->publish($msg->body);
     }
 };
 
+echo("[+] Sistema de Administración de Inventario \n ------- \n");
 $channel->basic_consume('order_queue', '', false, true, false, false, $callback);
 
 while ($channel->callbacks) {
+    echo("[!] Consumiendo cola Ordenes de Compra \n");
     $channel->wait();
 }
 

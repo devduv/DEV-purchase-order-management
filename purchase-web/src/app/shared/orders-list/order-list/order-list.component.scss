@@ -1,0 +1,56 @@
+@import "src/styles/styles.color.scss";
+
+.order__id {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.order-item_content {
+    text-align: center;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background-color: white;
+   
+}
+
+::ng-deep .mat-horizontal-stepper-header{
+    pointer-events: none !important;
+}
+
+.order_content {
+    display: inline-flex;
+    width: 100%;
+
+}
+
+@media screen and (min-width: 769px) {
+    .order-item_content:hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    }
+}
+
+.order__id-content {
+    width: 70%;
+    text-align: left;
+    font-size: 20px;
+}
+
+.order__date-content {
+}
+
+.order__amount-content {
+}
+
+.order__information {
+    width: 30%;
+    text-align: right;
+    font-size: 20px;
+}
+
+.traker_order {
+    color: $color-primary-01;
+    font-size: 18px;
+}
