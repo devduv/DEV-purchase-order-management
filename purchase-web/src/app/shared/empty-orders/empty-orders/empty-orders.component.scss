@@ -1,0 +1,25 @@
+@import "src/styles/styles.color.scss";
+
+.order-empty {
+    text-align: center;
+    font-size: 25px;
+    margin: 15px;
+}
+
+.button__continue {
+    cursor: pointer;
+    text-align: center;
+    width: 200px;
+    background-color: $color_secondary-03;
+    line-height: 55px;
+}
+
+.button__continue:hover {
+    background-color: $color_secondary-02;
+}
+
+.button__actions {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+}
