@@ -28,38 +28,44 @@
         <hr style="border-top: 1px dashed  gray;" />
     </div>
     <div>
-        <div class="traker_order">
-            Seguimiento de la orden:
+        <div *ngIf="order.state == 'X'" style="color: red; font-weight: bold;">
+            ORDER CANCELADA (NO HAY STOCK)
         </div>
-        <mat-horizontal-stepper linear #stepper selectedIndex="{{order.state}}">
-            <mat-step state="0" [editable]="false" label="Procesando pedido" (click)="$event.stopPropagation()">
-            </mat-step>
-            <mat-step state="1" [editable]="false" label="Pedido recibido" (click)="$event.stopPropagation()">
-            </mat-step>
-            <mat-step state="2" [editable]="false" label="Pedido confirmado" (click)="$event.stopPropagation()">
-            </mat-step>
-            <mat-step state="3" [editable]="false" label="Facturación" (click)="$event.stopPropagation()">
-            </mat-step>
-            <mat-step [editable]="false" label="Realizar Pago" (click)="$event.stopPropagation()">
-            </mat-step>
-            <ng-template matStepperIcon="0">
-                <mat-icon *ngIf="+order.state > 0">check</mat-icon>
-                <div *ngIf="+order.state <= 0"> 1</div>
-            </ng-template>
+        <div *ngIf="order.state != 'X'">
+            <div class="traker_order">
+                Seguimiento de la orden:
+            </div>
 
-            <ng-template  matStepperIcon="1">
-                <mat-icon *ngIf="+order.state > 1">check</mat-icon>
-               <div *ngIf="+order.state <=  1"> 2</div>
-            </ng-template>
+            <mat-horizontal-stepper linear #stepper selectedIndex="{{order.state}}">
+                <mat-step state="0" [editable]="false" label="Procesando pedido" (click)="$event.stopPropagation()">
+                </mat-step>
+                <mat-step state="1" [editable]="false" label="Pedido recibido" (click)="$event.stopPropagation()">
+                </mat-step>
+                <mat-step state="2" [editable]="false" label="Pedido confirmado" (click)="$event.stopPropagation()">
+                </mat-step>
+                <mat-step state="3" [editable]="false" label="Facturación" (click)="$event.stopPropagation()">
+                </mat-step>
+                <mat-step [editable]="false" label="Realizar Pago" (click)="$event.stopPropagation()">
+                </mat-step>
+                <ng-template matStepperIcon="0">
+                    <mat-icon *ngIf="+order.state > 0">check</mat-icon>
+                    <div *ngIf="+order.state <= 0"> 1</div>
+                </ng-template>
 
-            <ng-template matStepperIcon="2">
-                <mat-icon *ngIf="+order.state > 2">check</mat-icon>
-                <div *ngIf="+order.state <= 2"> 3</div>
-            </ng-template>
-            <ng-template matStepperIcon="3">
-                <mat-icon *ngIf="+order.state > 3">check</mat-icon>
-               <div *ngIf="+order.state <= 3 "> 4</div>
-            </ng-template>
-        </mat-horizontal-stepper>
+                <ng-template matStepperIcon="1">
+                    <mat-icon *ngIf="+order.state > 1">check</mat-icon>
+                    <div *ngIf="+order.state <=  1"> 2</div>
+                </ng-template>
+
+                <ng-template matStepperIcon="2">
+                    <mat-icon *ngIf="+order.state > 2">check</mat-icon>
+                    <div *ngIf="+order.state <= 2"> 3</div>
+                </ng-template>
+                <ng-template matStepperIcon="3">
+                    <mat-icon *ngIf="+order.state > 3">check</mat-icon>
+                    <div *ngIf="+order.state <= 3 "> 4</div>
+                </ng-template>
+            </mat-horizontal-stepper>
+        </div>
     </div>
 </div>

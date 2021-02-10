@@ -95,7 +95,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public List<Order> getOrderListCustomer(String customerId) {
-        String query = "SELECT * FROM TPORDEN WHERE CCLIENTE = ?";
+        String query = "SELECT * FROM TPORDEN WHERE CCLIENTE = ? ORDER BY CORDEN DESC";
 
         List<Map<String, Object>> rows = this.jdbcTemplate.queryForList(query, customerId);
         List<Order> list = row.mapRow(rows);

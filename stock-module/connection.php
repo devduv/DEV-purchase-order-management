@@ -16,7 +16,7 @@ $callback = function ($msg) {
         $publisher->publish($msg->body);
     } else {
         $publisher = new StockPublisher('failed_queue');
-        $publisher->publish($msg->body);
+        $publisher->publish('"SU ORDEN DE COMPRA CANCELADO"');
     }
 };
 

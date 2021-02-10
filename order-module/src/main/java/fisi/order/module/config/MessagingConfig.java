@@ -15,7 +15,7 @@ public class MessagingConfig {
     public static final String END_QUEUE = "end_queue";
     public static final String EXCHANGE = "order_exchange";
     public static final String ROUTING_KEY = "order_routingKey";
-
+    public static final String FAILED_QUEUE = "failed_queue";
     @Bean
     public Queue queue() {
         return new Queue(QUEUE);

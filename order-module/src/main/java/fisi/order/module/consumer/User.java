@@ -12,4 +12,9 @@ public class User {
     public void consumeMessageFromQueue(String endQueue) {
         System.out.println("Mensaje recibido de la cola: " + endQueue);
     }
+
+    @RabbitListener(queues = MessagingConfig.FAILED_QUEUE)
+    public void consumeFaieldMessageFromQueue(String endQueue) {
+        System.out.println("Mensaje recibido de la cola: " + endQueue);
+    }
 }

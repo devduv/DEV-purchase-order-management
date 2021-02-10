@@ -55,18 +55,19 @@ class StockRepository
         }
 
         if ($flag) {
+            $this->updateOrderState($orderId, 'X');
             echo ("Enviando mensaje de error al módulo de Procesamiento de Ordenes \n");
             return false;
         } else {
-            $this->updateOrderState($orderId);
+            $this->updateOrderState($orderId, '1');
             echo ("Enviando mensaje al módulo de Reserva \n");
             return true;
         }
     }
 
-    function updateOrderState($orderId)
+    function updateOrderState($orderId, $state)
     {
-        $sql = "UPDATE TPORDEN SET ORDER_STATE = '1' WHERE CORDEN = ?";
+        $sql = "UPDATE TPORDEN SET ORDER_STATE = '$state' WHERE CORDEN = ?";
         $stmt = $this->gbd->prepare($sql);
         $stmt->execute([$orderId]);
     }
