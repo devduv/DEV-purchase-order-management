@@ -10,6 +10,7 @@ Programming Lenguages used:
 
 Requirements
 - PHP 8.X
+- Composer 
 - NodeJS (NPM)
 - Angular Cli 8.~ o más
 - Java JDK 1.8
